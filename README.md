@@ -13,7 +13,6 @@ This system:
 - Works with many providers (OpenAI, OpenRouter, Groq, HuggingFace, Gemini, etc.)  
 - Supports fallback to the original CLI behavior when the rotator is offline  
 - Requires **Zero configuration editing** inside the CLI tools  
-- Works in **WSL2 + Node.js** easily
 
 ---
 
