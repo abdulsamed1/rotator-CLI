@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
-# qwen-wrapper.sh
+# opencode-wrapper.sh
 
-# المسار الحقيقي لـ Qwen CLI
-REAL_BIN="/home/abdulsamed/.npm-global/bin/qwen"
+REAL_BIN="/home/abdulsamed/.opencode/bin/opencode"
 
-# جرّب تتواصل مع الروتاتور
+# جرّب التواصل مع الروتاتور
 RESP=$(curl -s --max-time 1 "http://localhost:3000/next?provider=openai")
-
 VALID=$(echo "$RESP" | grep -c "key")
 
 if [ "$VALID" -eq 1 ]; then
     KEY=$(echo "$RESP" | jq -r .key)
-    if [ ! -z "$KEY" ] && [ "$KEY" != "null" ]; then
-        echo "[Rotator] Using rotated OpenAI-compatible key for Qwen CLI"
 
-        # إعداد متغيرات Qwen لتسليمها للروتاتور
+    if [ ! -z "$KEY" ] && [ "$KEY" != "null" ]; then
+        echo "[Rotator] Using rotated OpenAI-compatible key for OpenCode CLI"
+
+        # OpenAI-style API integration
         export OPENAI_API_KEY="$KEY"
         export OPENAI_BASE_URL="http://localhost:3000/v1/forward?provider=openai"
 
@@ -22,5 +21,6 @@ if [ "$VALID" -eq 1 ]; then
     fi
 fi
 
-echo "[Fallback] Rotator not available — starting Qwen CLI normally"
+# فشل rotator → fallback إلى الوضع الطبيعي
+echo "[Fallback] Rotator not available — starting OpenCode normally"
 exec "$REAL_BIN" "$@"
