@@ -12,12 +12,8 @@ This system:
 - Automatically rotates API keys when quota is exceeded  
 - Works with many providers (OpenAI, OpenRouter, Groq, HuggingFace, Gemini, etc.)  
 - Supports fallback to the original CLI behavior when the rotator is offline  
-- Requires **Zero configuration editing** inside the CLI tools  
-<<<<<<< HEAD
-=======
-- Works in **WSL2 + Node.js** easily
->>>>>>> 0d6ea0d (feat: enhance README and add wrapper scripts for multiple CLIs with API key rotation)
-
+- Requires **Zero configuration editing** inside the CLI tools 
+-
 ---
 
 ## 📌 1. Folder Structure
